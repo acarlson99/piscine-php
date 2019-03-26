@@ -1,0 +1,91 @@
+.main_div {
+	display: grid | inline-grid;
+	grid-column-gap: 5px;
+	width: 95%;
+	height: 70%;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: repeat(18, 1fr);
+}
+
+.element {
+	display: inline-block;
+	/* width: 100%;
+				height: 100%; */
+	border-style: solid;
+	border-width: 2px;
+}
+
+.ele_hidden {
+	border-color: transparent !important;
+}
+
+.ele_alkali_metal {
+	background-color: darkgreen;
+}
+
+.ele_alkaline_earth_metal {
+	background-color: darkblue;
+}
+
+.ele_lanthanide {
+	background-color: pink;
+}
+
+.ele_actinide {
+	background-color: lightpink;
+}
+
+.ele_trans_metal {
+	background-color: purple;
+}
+
+.ele_post_trans_metal {
+	background-color: yellow;
+}
+
+.ele_metalloid {
+	background-color: blue;
+}
+
+.ele_other_nonmetal {
+	background-color: lightgreen;
+}
+
+.ele_halogen {
+	background-color: ivory;
+}
+
+.ele_noblegas {
+	background-color: red;
+}
+
+.ele_unknown {
+	background-color: green;
+}
+
+.element_weight {
+	font-family: monospace;
+	text-align: right;
+	padding: 0px;
+	align-self: right;
+	font-size: 1vw;
+}
+
+.element_name {
+	display: block;
+	margin: auto;
+	width: 50%;
+	font-family: monospace;
+	font-size: 1vw;
+	font-weight: bold;
+}
+
+.element_number {
+	font-family: monospace;
+	padding: 0px;
+	float: left;
+	font-size: 1vw;
+}
