@@ -1,0 +1,53 @@
+.bodyclass {
+	background-color: #505050;
+}
+
+.menuoverlay {
+	box-shadow: 10px 10px 5px;
+	border-radius: 10px;
+	background-color: #909090;
+	border: 1px solid #000;
+}
+
+.menutop {
+	margin: auto;
+	width: 70%;
+	height: 250px;
+}
+
+.menuleft {
+	margin-left: 17%;
+	margin-top: 1%;
+	width: 10%;
+	height: 35em;
+	text-align: center;
+}
+
+.menuright {
+}
+
+.doft_img {
+	margin: 20px;
+}
+
+.spyglass_img {
+	margin-left: 83%;
+	margin-top: -5%;
+}
+
+.close_gif {
+	float: right;
+	margin-right: 1%;
+	margin-top: -3.5%;
+}
+
+.reload_img {
+	float: right;
+	margin-right: 1%;
+	margin-top: -15%;
+}
+
+.action_bar {
+	padding-top: 7%;
+	padding-bottom: 1%;
+}
