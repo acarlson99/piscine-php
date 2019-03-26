@@ -72,3 +72,10 @@
 	height: 69%;
 	width: 46.5%;
 }
+
+.wall {
+	display: inline-block;
+	width: 70%;
+	height: 14%;
+	background: url("./resources/brick.jpg");
+}
