@@ -79,3 +79,34 @@
 	height: 14%;
 	background: url("./resources/brick.jpg");
 }
+
+.centerpic {
+	display: inline-block;
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	width: 96%;
+	height: 96%;
+}
+
+.chatbox {
+	display: inline-block;
+	position: absolute;
+	top: 80%;
+	left: 20%;
+	width: 20%;
+	height: 15%;
+	background-color: #A6FB96 !important;
+}
+
+.chatbox_text {
+	font-family: sans-serif;
+}
+
+.chatbox_redboy {
+	text-shadow: 2px 2px 4px #ff0000;
+}
+
+.chatbox_button {
+	border: 1px;
+}
