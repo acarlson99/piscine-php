@@ -10,8 +10,9 @@ $boytable = array();
 for ($i = 1; $i < $argc; ++$i) {
     $s = ft_split($argv[$i]);
     foreach($s as &$v)
-        $boytable[$v] = 1;
+        $boytable[$v] = $v;
 }
-foreach($boytable as $boy=>$_)
+sort($boytable);
+foreach($boytable as $boy)
     echo $boy, "\n";
 ?>
