@@ -4,4 +4,6 @@ function    ft_split($str) {
     sort($str);
     return ($str);
 }
+
+// print_r(ft_split("    Hello ,  World  AAAAAAAAA      "));
 ?>
