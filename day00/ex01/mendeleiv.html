@@ -14,8 +14,6 @@
 		 .row {
 			 display: grid;
 			 grid-template-columns: repeat(18, 1fr);
-			 height: 10%
-			 grid-gap: 4px;
 		 }
 
 		 .element {
@@ -28,10 +26,6 @@
 
 		 .ele_hidden {
 			 border-color: transparent !important;
-		 }
-
-		 .lanactborder {
-			 background: red;
 		 }
 
 		 .ele_alkali_metal {
@@ -79,6 +73,7 @@
 		 }
 
 		 .element_weight {
+			 font-family: monospace;
 			 text-align: right;
 			 padding: 0px;
 			 align-self: right;
@@ -89,12 +84,13 @@
 			 display: block;
 			 margin: auto;
 			 width: 50%;
-			 /* padding: 50%; */
-			 font-size: 2vw;
+			 font-family: monospace;
+			 font-size: 1vw;
 			 font-weight: bold;
 		 }
 
 		 .element_number {
+			 font-family: monospace;
 			 padding: 0px;
 			 float: left;
 			 font-size: 1vw;
@@ -210,7 +206,7 @@
 					<div class="element_name">Al</div>
 					<div class="element_number"><small>13</small></div>
 				</div>
-				<div class="element ele_other_nonmetal">
+				<div class="element ele_metalloid">
 					<div class="element_weight"> 28.09 </div>
 					<div class="element_name">Si</div>
 					<div class="element_number"><small>14</small></div>
@@ -297,32 +293,32 @@
 					<div class="element_name">Zn</div>
 					<div class="element_number"><short>30</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">69.723</div>
 					<div class="element_name">Ga</div>
 					<div class="element_number"><short>31</short></div>
 				</div>
-				<div class="element metalloid">
+				<div class="element ele_metalloid">
 					<div class="element_weight">72.64</div>
 					<div class="element_name">Ge</div>
 					<div class="element_number"><short>32</short></div>
 				</div>
-				<div class="element metalloid">
+				<div class="element ele_metalloid">
 					<div class="element_weight">74.922</div>
 					<div class="element_name">As</div>
 					<div class="element_number"><short>33</short></div>
 				</div>
-				<div class="element nonmetal">
+				<div class="element ele_other_nonmetal">
 					<div class="element_weight">78.96</div>
 					<div class="element_name">Se</div>
 					<div class="element_number"><short>34</short></div>
 				</div>
-				<div class="element nonmetal">
+				<div class="element ele_halogen">
 					<div class="element_weight">79.904</div>
 					<div class="element_name">Br</div>
 					<div class="element_number"><short>35</short></div>
 				</div>
-				<div class="element noblegas">
+				<div class="element ele_noblegas">
 					<div class="element_weight">83.8</div>
 					<div class="element_name">Kr</div>
 					<div class="element_number"><short>36</short></div>
@@ -389,32 +385,32 @@
 					<div class="element_name">Cd</div>
 					<div class="element_number"><short>48</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">114.818</div>
 					<div class="element_name">In</div>
 					<div class="element_number"><short>49</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">118.71</div>
 					<div class="element_name">Sn</div>
 					<div class="element_number"><short>50</short></div>
 				</div>
-				<div class="element metalloid">
+				<div class="element ele_metalloid">
 					<div class="element_weight">121.76</div>
 					<div class="element_name">Sb</div>
 					<div class="element_number"><short>51</short></div>
 				</div>
-				<div class="element metalloid">
+				<div class="element ele_metalloid">
 					<div class="element_weight">127.6</div>
 					<div class="element_name">Te</div>
 					<div class="element_number"><short>52</short></div>
 				</div>
-				<div class="element nonmetal">
+				<div class="element ele_halogen">
 					<div class="element_weight">126.905</div>
 					<div class="element_name">I</div>
 					<div class="element_number"><short>53</short></div>
 				</div>
-				<div class="element noblegas">
+				<div class="element ele_noblegas">
 					<div class="element_weight">131.293</div>
 					<div class="element_name">Xe</div>
 					<div class="element_number"><short>54</short></div>
@@ -481,32 +477,32 @@
 					<div class="element_name">Hg</div>
 					<div class="element_number"><short>80</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">204.383</div>
 					<div class="element_name">Tl</div>
 					<div class="element_number"><short>81</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">207.2</div>
 					<div class="element_name">Pb</div>
 					<div class="element_number"><short>82</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">208.98</div>
 					<div class="element_name">Bi</div>
 					<div class="element_number"><short>83</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_post_trans_metal">
 					<div class="element_weight">209</div>
 					<div class="element_name">Po</div>
 					<div class="element_number"><short>84</short></div>
 				</div>
-				<div class="element metalloid">
+				<div class="element ele_halogen">
 					<div class="element_weight">210</div>
 					<div class="element_name">At</div>
 					<div class="element_number"><short>85</short></div>
 				</div>
-				<div class="element noblegas">
+				<div class="element ele_noblegas">
 					<div class="element_weight">222</div>
 					<div class="element_name">Rn</div>
 					<div class="element_number"><short>86</short></div>
@@ -553,52 +549,52 @@
 					<div class="element_name">Hs</div>
 					<div class="element_number"><short>108</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">268</div>
 					<div class="element_name">Mt</div>
 					<div class="element_number"><short>109</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">281</div>
 					<div class="element_name">Ds</div>
 					<div class="element_number"><short>110</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">282</div>
 					<div class="element_name">Rg</div>
 					<div class="element_number"><short>111</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_trans_metal">
 					<div class="element_weight">285</div>
 					<div class="element_name">Cn</div>
 					<div class="element_number"><short>112</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">286</div>
 					<div class="element_name">Nh</div>
 					<div class="element_number"><short>113</short></div>
 				</div>
-				<div class="element posttransmetal">
+				<div class="element ele_unknown">
 					<div class="element_weight">289</div>
 					<div class="element_name">Fl</div>
 					<div class="element_number"><short>114</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">290</div>
 					<div class="element_name">Mc</div>
 					<div class="element_number"><short>115</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">293</div>
 					<div class="element_name">Lv</div>
 					<div class="element_number"><short>116</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_unknown">
 					<div class="element_weight">294</div>
 					<div class="element_name">Ts</div>
 					<div class="element_number"><short>117</short></div>
 				</div>
-				<div class="element synthetic">
+				<div class="element ele_noblegas">
 					<div class="element_weight">294</div>
 					<div class="element_name">Og</div>
 					<div class="element_number"><short>118</short></div>
@@ -615,7 +611,7 @@
 					<div class="element_name">&nbsp</div>
 					<div class="element_number"><short>&nbsp</short></div>
 				</div>
-				<div class="element lanactborder">
+				<div class="element ele_lanthanide">
 					<div class="element_weight">&nbsp</div>
 					<div class="element_name">&rarr;</div>
 					<div class="element_number"><short>&nbsp</short></div>
@@ -702,7 +698,7 @@
 					<div class="element_name">&nbsp</div>
 					<div class="element_number"><short>&nbsp</short></div>
 				</div>
-				<div class="element lanactborder">
+				<div class="element ele_lanthanide">
 					<div class="element_weight">&nbsp</div>
 					<div class="element_name">&rarr;</div>
 					<div class="element_number"><short>&nbsp</short></div>
@@ -783,5 +779,6 @@
 					<div class="element_number"><short>103</short></div>
 				</div>
 			</div>
+		</div>
 	</body>
 </html>
