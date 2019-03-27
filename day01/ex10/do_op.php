@@ -5,9 +5,9 @@ if ($argc != 4) {
 	exit(1);
 }
 
-$a = intval($argv[1]);
-$b = intval($argv[3]);
-switch ($argv[2]) {
+$a = intval(trim($argv[1], " \t"));
+$b = intval(trim($argv[3], " \t"));
+switch (trim($argv[2], " \t")) {
 case '+':
 	printf("%d\n", $a + $b);
 	break;
