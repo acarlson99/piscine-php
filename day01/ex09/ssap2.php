@@ -32,8 +32,14 @@ function	cmp($s1, $s2) {
 	$i = 0;
 	$s1 = strtolower($s1);
 	$s2 = strtolower($s2);
-	while ($i < count($s1) && $i < count($s2) && $s1[$i] === $s2[$i])
+	$l1 = strlen($s1);
+	$l2 = strlen($s2);
+	while ($i < $l1 && $i < $l2 && $s1[$i] === $s2[$i])
 		++$i;
+	if ($i == $l1)
+		return (-1);
+	else if ($i == $l2)
+		return (1);
 	$s1t = assign_type($s1[$i]);
 	$s2t = assign_type($s2[$i]);
 	if ($s1t != $s2t)
@@ -52,10 +58,4 @@ for ($i = 1; $i < $argc; ++$i)
 usort($boytable, "cmp");
 foreach($boytable as $boy)
     echo $boy, "\n";
-
-/*
-  char
-  number
-  other
-*/
 ?>
