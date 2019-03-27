@@ -2,7 +2,6 @@
 <?php
 function	ft_split($str) {
 	$str = explode(" ", preg_replace('/ +/', ' ', trim($str, " ")));
-	sort($str);
 	return ($str);
 }
 
@@ -49,11 +48,13 @@ function	cmp($s1, $s2) {
 }
 
 $boytable = array();
-for ($i = 1; $i < $argc; ++$i)
-{
+$boynum = 0;
+for ($i = 1; $i < $argc; ++$i) {
 	$s = ft_split($argv[$i]);
-	foreach($s as &$v)
-		$boytable[$v] = $v;
+	foreach($s as &$v) {
+		$boytable[$boynum] = $v;
+		++$boynum;
+	}
 }
 usort($boytable, "cmp");
 foreach($boytable as $boy)
