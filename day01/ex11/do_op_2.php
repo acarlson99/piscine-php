@@ -5,12 +5,14 @@ if ($argc != 2) {
 	exit(1);
 }
 
-if (preg_match('//', $argv[1], $re)) {
+if (!preg_match('/^\s*(\d+)\s*([\-\+%\*\/])\s*(\d+)\s*$/', $argv[1], $re)) {
+	echo "Syntax Error\n";
+	exit(1);
 }
-	
-$a = intval($re[0]);
-$b = intval($re[2]);
-switch ($re[1]) {
+
+$a = intval($re[1]);
+$b = intval($re[3]);
+switch ($re[2]) {
 case '+':
 	printf("%d\n", $a + $b);
 	break;
