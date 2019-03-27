@@ -7,10 +7,13 @@ function    ft_split(&$str) {
 }
 
 $boytable = array();
+$boynum = 0;
 for ($i = 1; $i < $argc; ++$i) {
-    $s = ft_split($argv[$i]);
-    foreach($s as &$v)
-        $boytable[$v] = $v;
+	$s = ft_split($argv[$i]);
+	foreach($s as &$v) {
+		$boytable[$boynum] = $v;
+		++$boynum;
+	}
 }
 sort($boytable);
 foreach($boytable as $boy)
