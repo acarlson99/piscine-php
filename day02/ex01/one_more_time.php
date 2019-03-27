@@ -1,6 +1,10 @@
 #! /usr/bin/php
 <?php
 
+function	wrong_format() {
+	echo "Wrong Format\n";
+}
+
 function	ft_split($str) {
 	return (explode(" ", preg_replace('/ +/', ' ', trim($str, " "))));
 }
@@ -40,7 +44,10 @@ $months = array(
 	12 => "/^[Dd][eé]cembre$/",
 );
 
-// TODO: error check argv[1]
+if (!preg_match('/^\w+ [0-2]?\d \w+ \d+ [0-6]\d:[0-6]\d:[0-6]\d$/', $argv[1])) {
+	wrong_format();
+	exit(1);
+}
 
 $args = ft_split($argv[1]);
 print_r($args);
@@ -48,12 +55,20 @@ print_r($args);
 $wday = 0;
 while ($wday < count($weekdays) && !preg_match($weekdays[$wday], $args[0]))
 	++$wday;
+if ($wday >= count($weekdays)) {
+	wrong_format();
+	exit(1);
+}
 
 $day = $args[1];
 
 $mon = 1;
 while ($mon < count($months) && !preg_match($months[$mon], $args[2]))
 	++$mon;
+if ($mon >= count($months)) {
+	wrong_format();
+	exit(1);
+}
 
 $year = $args[3];
 $time = $args[4];
@@ -68,5 +83,7 @@ echo "$total\n";
 $date = date_create_from_format('Y-m-d D H:i:s', $total);
 echo $date->format('Y-m-d D H:i:s'), "\n";
 echo $date->format('U'), "\n";
+
 // TODO: error check datetime
+
 ?>
