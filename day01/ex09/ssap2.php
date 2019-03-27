@@ -1,30 +1,25 @@
 #! /usr/bin/php
 <?php
-function	ft_split($str)
-{
+function	ft_split($str) {
 	$str = explode(" ", preg_replace('/ +/', ' ', trim($str, " ")));
 	sort($str);
 	return ($str);
 }
 
-function	ischar($c)
-{
+function	ischar($c) {
 	return (($c >= 'a' && $c <= 'z') || ($c >= 'A' && $c <= 'Z'));
 }
 
-function	isdigit($c)
-{
+function	isdigit($c) {
 	return ($c >= '0' && $c <= '9');
 }
 
-function	rfturn($l, $v)
-{
+function	rfturn($l, $v) {
 	printf("%d LINE %d\n", $v, $l);
 	return ($v);
 }
 
-function	assign_type($c)
-{
+function	assign_type($c) {
 	if (ischar($c))
 		return (0);
 	else if (isdigit($c))
@@ -33,8 +28,7 @@ function	assign_type($c)
 		return (2);
 }
 
-function	cmp($s1, $s2)
-{
+function	cmp($s1, $s2) {
 	$i = 0;
 	$s1 = strtolower($s1);
 	$s2 = strtolower($s2);
