@@ -3,12 +3,9 @@
 echo "Enter a number: ";
 while ($f = fgets(STDIN)) {
 	$f = rtrim($f, "\n");
-	if ($f > "9223372036854775807") {
-		echo "OWO it's soooooo big\n";
-	}
-	else if (preg_match('/^-?[0-9]+$/', $f)) {
-		$num = intval($f);
-		echo "The number $num ";
+	if (preg_match('/^-?[0-9]+$/', $f)) {
+		$num = intval(substr($f, -1));
+		echo "The number $f ";
 		if ($num % 2)
 			echo "is odd";
 		else
