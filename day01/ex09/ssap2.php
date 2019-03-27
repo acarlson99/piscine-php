@@ -56,7 +56,8 @@ for ($i = 1; $i < $argc; ++$i)
 		$boytable[$v] = $v;
 }
 usort($boytable, "cmp");
-print_r($boytable);
+foreach($boytable as $boy)
+    echo $boy, "\n";
 
 /*
   char
