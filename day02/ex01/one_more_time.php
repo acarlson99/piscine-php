@@ -20,13 +20,13 @@ $weekdays = array(
 );
 
 $days_english = array(
-	0 => "Sun",
-	1 => "Mon",
-	2 => "Tue",
-	3 => "Wed",
-	4 => "Thurs",
-	5 => "Fri",
-	6 => "Sat",
+	0 => "Mon",
+	1 => "Tue",
+	2 => "Wed",
+	3 => "Thurs",
+	4 => "Fri",
+	5 => "Sat",
+	6 => "Sun",
 );
 
 $months = array(
@@ -44,13 +44,16 @@ $months = array(
 	12 => "/^[Dd][eé]cembre$/",
 );
 
+if ($argc != 2) {
+	exit(1);
+}
+
 if (!preg_match('/^\w+ [0-2]?\d \w+ \d+ [0-6]\d:[0-6]\d:[0-6]\d$/', $argv[1])) {
 	wrong_format();
 	exit(1);
 }
 
 $args = ft_split($argv[1]);
-print_r($args);
 
 $wday = 0;
 while ($wday < count($weekdays) && !preg_match($weekdays[$wday], $args[0]))
@@ -73,16 +76,25 @@ if ($mon >= count($months)) {
 $year = $args[3];
 $time = $args[4];
 
-echo 'wday ', $wday, "\n";
-echo 'day ', $day, "\n";
-echo 'mon ', $mon, "\n";
-echo 'year ', $year, "\n";
-echo 'time ', $time, "\n";
+// echo 'wday ', $wday, "\n";
+// echo 'day ', $day, "\n";
+// echo 'mon ', $mon, "\n";
+// echo 'year ', $year, "\n";
+// echo 'time ', $time, "\n";
+
+date_default_timezone_set('Europe/Paris');
+
 $total = $year . "-" . $mon . "-" . $day . " " . $days_english[$wday] . " " . $time;
-echo "$total\n";
-$date = date_create_from_format('Y-m-d D H:i:s', $total);
-echo $date->format('Y-m-d D H:i:s'), "\n";
-echo $date->format('U'), "\n";
+if (($date = strtotime($total)) === FALSE) {
+	echo "give the good time\n";
+	exit(1);
+}
+echo "$date", "\n";
+
+// echo "$total\n";
+// $date = date_create_from_format('Y-m-d D H:i:s', $total);
+// echo $date->format('Y-m-d D H:i:s'), "\n";
+// echo $date->format('U'), "\n";
 
 // TODO: error check datetime
 
