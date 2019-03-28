@@ -16,11 +16,11 @@ for ($argnum = 1; $argnum < $argc; ++$argnum) {
 		$end = strpos($contents, "</a>", $start);
 		if ($end === FALSE)
 			break ;
-		echo "-", substr($contents, $start, $end - $start), "\n\n";
+		echo "-", substr($contents, $start, $end - $start), "-";
 		$start = strpos($contents, "<a", $end);
-		if ($end === FALSE)
+		if ($start === FALSE)
 			break ;
-		echo "2", substr($contents, $end, $start), "/2";
+		echo substr($contents, $end, $start - $end);
 	}
 	echo substr($contents, $end);
 }
