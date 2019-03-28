@@ -9,9 +9,9 @@ while ($bytes = fread($file, 628)) {
 sort($arr);
 foreach ($arr as $val) {
 	if ($val['val'] == 7) {
-		echo str_pad(substr(trim($val['uname']), 0, 8), 8, " ");
+		echo str_pad(substr(trim($val['uname']), 0, 8), 8);
 		echo " ";
-		echo str_pad(substr(trim($val['tty']), 0, 8), 8, " ");
+		echo str_pad(substr(trim($val['tty']), 0, 8), 8);
 		echo " ";
 		echo date('M', $val['time1']);
 		echo str_pad(date('j', $val['time1']), 3, " ", STR_PAD_LEFT);
