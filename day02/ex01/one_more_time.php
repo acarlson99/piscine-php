@@ -76,12 +76,6 @@ if ($mon >= count($months)) {
 $year = $args[3];
 $time = $args[4];
 
-// echo 'wday ', $wday, "\n";
-// echo 'day ', $day, "\n";
-// echo 'mon ', $mon, "\n";
-// echo 'year ', $year, "\n";
-// echo 'time ', $time, "\n";
-
 date_default_timezone_set('Europe/Paris');
 
 $total = $year . "-" . $mon . "-" . $day . " " . $days_english[$wday] . " " . $time;
@@ -91,11 +85,6 @@ if (($date = strtotime($total)) === FALSE) {
 }
 echo "$date", "\n";
 
-// echo "$total\n";
-// $date = date_create_from_format('Y-m-d D H:i:s', $total);
-// echo $date->format('Y-m-d D H:i:s'), "\n";
-// echo $date->format('U'), "\n";
-
-// TODO: error check datetime
+// "Mardi 12 Novembre 2013 12:02:21"
 
 ?>
