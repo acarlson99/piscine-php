@@ -4,6 +4,7 @@
 	</style>
 	<title>phpinfo()</title><meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE" /></head>
 	
+	<!-- php -S localhost:8100 to run server -->
 	
 	<?php
 	phpinfo();
