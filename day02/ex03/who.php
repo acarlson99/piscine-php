@@ -2,22 +2,22 @@
 <?php
 date_default_timezone_set('America/Los_Angeles');
 $file = fopen("/var/run/utmpx", "r");
-while ($b = fread($file, 628)) {
-	$unpacked = unpack("a256uname/a4/a32tty/i/ival/I2time/a256/i16", $b);
+while ($bytes = fread($file, 628)) {
+	$unpacked = unpack("a256uname/a4/a32tty/i/ival/I2time/a256/i16", $bytes);
 	$arr[$unpacked['tty']] = $unpacked;
 }
-ksort($arr);
-foreach ($arr as $v) {
-	if ($v['val'] == 7) {
-		echo str_pad(substr(trim($v['uname']), 0, 8), 8, " ");
+sort($arr);
+foreach ($arr as $val) {
+	if ($val['val'] == 7) {
+		echo str_pad(substr(trim($val['uname']), 0, 8), 8, " ");
 		echo " ";
-		echo str_pad(substr(trim($v['tty']), 0, 8), 8, " ");
+		echo str_pad(substr(trim($val['tty']), 0, 8), 8, " ");
 		echo " ";
-		echo date('M', $v['time1']);
-		echo str_pad(date('j', $v['time1']), 3, " ", STR_PAD_LEFT);
+		echo date('M', $val['time1']);
+		echo str_pad(date('j', $val['time1']), 3, " ", STR_PAD_LEFT);
 		echo " ";
-		echo date('H:i', $v['time1']);
-		echo "\n";
+		echo date('H:i', $val['time1']);
+		echo " \n";
 	}
 }
 ?>
