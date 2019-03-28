@@ -19,14 +19,16 @@ function	mod_content($contents, $start, $end) {
 	return ($contents);
 }
 
-$contents = file_get_contents($argv[1]);
-$start = 0;
-while (($start = strpos($contents, "<a", $start)) !== FALSE)
-{
-	if (($end = strpos($contents, "</a>", $start)) === FALSE)
-		break ;
-	$contents = (mod_content(mod_title($contents, $start, $end), $start, $end));
-	$start = $end + 1;
+for ($b = 1; $b < $argc; ++$b) {
+	$contents = file_get_contents($argv[$b]);
+	$start = 0;
+	while (($start = strpos($contents, "<a", $start)) !== FALSE)
+	{
+		if (($end = strpos($contents, "</a>", $start)) === FALSE)
+			break ;
+		$contents = (mod_content(mod_title($contents, $start, $end), $start, $end));
+		$start = $end + 1;
+	}
+	echo $contents;
 }
-echo $contents;
 ?>
