@@ -1,58 +1,35 @@
 #! /usr/bin/php
 <?php
-function	heccmeupdawg($string) {
-	$s = "";
-	while (preg_match_all("/(?:(<[^>]*?title=\")([^\"]*?)(\")([^>]*>?))/s", $string, $re)) {
-		print_r($re);
-		$i = 1;
-		$idx_num = 0;
-		while ($i < count($re)) {
-			$s .= $re[$i];
-			++$i;
-			$s .= strtoupper($re[$i]);
-			++$i;
-			$s .= $re[$i];
-			++$i;
-			$s .= $re[$i];
-			++$i;
-		}
+function	mod_title($contents, $start, $end) {
+	if (($t_start = strpos($contents, "title=", $start)) !== FALSE && $t_start < $end) {
+		$t_start += 6;
+		if (($t_end = strpos($contents, "\"", $t_start + 1)) === FALSE)
+			$t_end = strpos($contents, " ", $t_start + 1);
+		$contents = substr_replace($contents, strtoupper(substr($contents, $t_start, $t_end - $t_start)), $t_start, $t_end - $t_start);
 	}
-	// var_dump($s);
-	if (preg_match_all("/(?:>([^<]*?)<)+/s", $s, $re)) {
-		print_r($re);
-		$i = 0;
-		while ($i < count($re)) {
-			$s .= ">" . strtoupper($re[1]) . "<";
-			++$i;
-		}
-	}
-	if ($s === "")
-		echo ($string);
-	else
-		echo $s;
+	return ($contents);
 }
 
-for ($argnum = 1; $argnum < $argc; ++$argnum) {
-	$contents = file_get_contents($argv[$argnum]);
-	$b = strlen($contents);
-	$start = strpos($contents, "<a");
-	$end = 0;
-	echo substr($contents, $end, $start);
-	if ($start === FALSE)
-		continue ;
-	while ($start < $b)
-	{
-		if ($start === FALSE)
-			break ;
-		$end = strpos($contents, "</a>", $start);
-		if ($end === FALSE)
-			break ;
-		heccmeupdawg(substr($contents, $start, $end - $start));
-		$start = strpos($contents, "<a", $end);
-		if ($start === FALSE)
-			break ;
-		echo substr($contents, $end, $start - $end);
+function	mod_content($contents, $start, $end) {
+	$c_start = strpos($contents, ">", $start + 1);
+	$c_end = strpos($contents, "<", $c_start + 1);
+	$contents = substr_replace($contents, strtoupper(substr($contents, $c_start, $c_end - $c_start)), $c_start, $c_end - $c_start);
+	if ($c_end != $end) {
+		$contents = mod_title($contents, $c_end, $end);
+		$contents = mod_content($contents, $c_end, $end);
 	}
-	echo substr($contents, $end);
+	return ($contents);
 }
+
+$contents = file_get_contents($argv[1]);
+$start = 0;
+while (($start = strpos($contents, "<a", $start)) !== FALSE)
+{
+	if (($end = strpos($contents, "</a>", $start)) === FALSE)
+		break ;
+	$contents = mod_title($contents, $start, $end);
+	$contents = mod_content($contents, $start, $end);
+	$start = $end + 1;
+}
+echo $contents;
 ?>
