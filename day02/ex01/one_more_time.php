@@ -48,7 +48,7 @@ if ($argc != 2) {
 	exit(1);
 }
 
-if (!preg_match('/^\w+ [0-2]?\d \w+ \d+ [0-6]\d:[0-6]\d:[0-6]\d$/', $argv[1])) {
+if (!preg_match('/^\w+ [0-3]?\d \w+ \d+ [0-6]\d:[0-6]\d:[0-6]\d$/', $argv[1])) {
 	wrong_format();
 	exit(1);
 }
