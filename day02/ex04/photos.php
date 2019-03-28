@@ -4,14 +4,20 @@ function	replace_silly($name) {
 	return (preg_replace("/\//", "!", $name));
 }
 
-function	save_img($filename, $dirname, $nicename) {
-	echo "CALLED ON $filename\n";
+function	fix_filename($hostname, $newfilename) {
+	return (preg_replace('/\/?\\.[^.\\s]{3,4}$/', '', $hostname) . "/" . $newfilename);
+}
+
+function	save_img($filename, $dirname, $hostname) {
 	if ($filename == "")
 		return ;
 	$newfilename = replace_silly($filename);
+	if ($newfilename[0] === '.') {
+		$newfilename = fix_filename($hostname, $newfilename);
+	}
 	$fn = $dirname . "/" . $newfilename;
 	file_put_contents($fn, file_get_contents($filename));
-	echo "$filename\n";
+	echo "FOUND IMAGE $filename\n";
 }
 
 $c = curl_init();
@@ -23,7 +29,6 @@ if (($raw = curl_exec($c)) === FALSE) {
 	echo "CURL ERROR\n";
 	exit(1);
 }
-echo $raw;
 preg_match_all("/<img .*?src=\"([^\"]*?)\".*?>/s", $raw, $re);
 $nicename = trim($argv[1], "/");
 $dirname = "./" . replace_silly($nicename);
@@ -31,7 +36,6 @@ if (mkdir($dirname, 0777, true) === FALSE) {
 	echo "Error making directory.  Aborting\n";
 	exit(1);
 }
-print_r($re);
 foreach ($re as $key => $matchgroup) {
 	if ($key == 0)
 		continue ;
