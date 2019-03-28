@@ -5,7 +5,7 @@ if ($argc != 2) {
 	exit(1);
 }
 
-if (!preg_match('/^\s*(\d+)\s*([\-\+%\*\/])\s*(\d+)\s*$/', $argv[1], $re)) {
+if (!preg_match('/^\s*(-?\d+)\s*([\-\+%\*\/])\s*(-?\d+)\s*$/', $argv[1], $re)) {
 	echo "Syntax Error\n";
 	exit(1);
 }
