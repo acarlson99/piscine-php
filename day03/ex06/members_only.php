@@ -4,7 +4,6 @@
 //    curl --user zaz:jaimelespetitsponeys http://eXrXpX.42.fr:8xxx/ex06/members_only.php
 
 if ($_SERVER['PHP_AUTH_USER'] == "zaz" && $_SERVER['PHP_AUTH_PW'] == 'jaimelespetitsponeys') {
-	header("Content-Type: image/png");
 	echo "<html><body>\nHello Zaz<br />\n";
 	echo "<img src='data:image/png;base64,";
 	echo base64_encode(file_get_contents("../img/42.png"));
