@@ -6,13 +6,21 @@ function	getData($file) {
 		return (array());
 }
 
+function	usrExists($uname, $db) {
+	foreach($db as $login => $dat) {
+		if ($uname == $login)
+			return (1);
+	}
+	return (0);
+}
+
 function	writeToFile($login, $passwd, $file) {
 	if (!file_exists("../private")) {
 		echo "DOING THING\n";
 		mkdir("../private");
 	}
 	$data = getData($file);
-	if ($data[$login])
+	if (usrExists($login, $data))
 		return (1);
 	$data[$login]['login'] = $login;
 	$data[$login]['passwd'] = hash("whirlpool", $passwd);
