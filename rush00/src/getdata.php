@@ -10,7 +10,7 @@ function	getUsers() {
 }
 
 function	getCart() {
-	if (isset($_SESSION['logged_on']))
+	if (isset($_SESSION['login']))
 		return (unserialize(file_get_contents(BASKETFILE)));
 	else
 		return ($_SESSION['session_cart']);
@@ -25,8 +25,8 @@ function	addCartToDatabase($cart, $username) {
 }
 
 function	addToCart($itemname) {
-	if (isset($_SESSION['logged_on'])) {
-		$username = $_SESSION['logged_on'];
+	if (isset($_SESSION['login'])) {
+		$username = $_SESSION['login'];
 		$cart = getCart();
 		$cart[$username][] = getItems()[$itemname];
 		file_put_contents(BASKETFILE, serialize($cart));
