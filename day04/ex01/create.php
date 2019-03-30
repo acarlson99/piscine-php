@@ -19,6 +19,5 @@ if ($_POST['submit'] == 'OK' && $_POST['login'] && $_POST['passwd']) {
 	$passwd = $_POST['passwd'];
 	writeToFile($login, $passwd, "../private/passwd");
 	print_r(unserialize(file_get_contents("../private/passwd")));
-	return ;
 }
 ?>

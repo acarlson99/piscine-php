@@ -16,7 +16,7 @@ if ($_SESSION['passwd'])
 ?>
 
 <html><body>
-<form action="index.php" method="get">
+<form action="index.php" name="index.php" method="get">
 Username: <input type="text" name="login" value="<?php echo $login_value ?>" />
 <br />
 Password: <input type="password" name="passwd" value="<?php echo $passwd_value ?>" />
