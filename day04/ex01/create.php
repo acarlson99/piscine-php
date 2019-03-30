@@ -24,7 +24,7 @@ $err = 0;
 if ($_POST['submit'] == 'OK' && $_POST['login'] && $_POST['passwd']) {
 	$login = $_POST['login'];
 	$passwd = $_POST['passwd'];
-	if ($login !== "" && !passwd !== "") {
+	if ($login !== "" && !$passwd !== "") {
 		if (writeToFile($login, $passwd, "../private/passwd"))
 			$err = 1;
 	}
