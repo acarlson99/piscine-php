@@ -20,6 +20,6 @@ if ($_SESSION['passwd'])
 Username: <input type="text" name="login" value="<?php echo $login_value ?>" />
 <br />
 Password: <input type="password" name="passwd" value="<?php echo $passwd_value ?>" />
-<input type="submit" value="OK" />
+<input type="submit" name="submit" value="OK" />
 </form>
 </body></html>
