@@ -15,6 +15,12 @@ function	auth($login, $passwd, $db) {
 if (file_exists("../private/passwd"))
 	$db = unserialize(file_get_contents("../private/passwd"));
 else
-	return (FALSE);
-
+	$db = array();
+if (auth($_POST['login'], $_POST['oldpw'], $db)) {
+	$db[$_POST['login']]['passwd'] = hash("whirlpool", $_POST['newpw']);
+	file_put_contents("../private/passwd", serialize($db));
+	echo "OK\n";
+}
+else
+	echo "ERROR\n";
 ?>
