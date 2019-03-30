@@ -16,3 +16,5 @@ $items = array(
 	'passionfruit' => array('name' => 'passionfruit', 'price' => 12, 'tags' => array('fruit', 'family'), 'img' => 'https://www.rachaelraymag.com/.image/t_share/MTQ1NzM5NjAxNjE1NTI5OTA0/passion-fruit-half-102951784.jpg'),
 );
 file_put_contents(ITEMFILE, serialize($items));
+
+unlink(BASKETFILE);

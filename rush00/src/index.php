@@ -14,7 +14,7 @@ if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
 		if ($_POST['login'] && $_POST['passwd']) {
 			if (authUsr($_POST['login'], $_POST['passwd'])) {
 				$_SESSION['login'] = $_POST['login'];
-				$_SESSION['passwd'] = $_POST['passwd'];
+				$_SESSION['passwd'] = hash("whirlpool", $_POST['passwd']);
 			}
 			else
 				echo "<div>LOGIN FAILED</div>\n";
@@ -25,7 +25,6 @@ if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
 			$_SESSION['login'] = FALSE;
 			$_SESSION['passwd'] = FALSE;
 		}
-
 	}
 	else if ($_POST['submit'] == 'signup') {
 
@@ -45,6 +44,10 @@ if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
 				$_SESSION['login'] = FALSE;
 				$_SESSION['passwd'] = FALSE;
 			}
+			else {
+				$_SESSION['login'] = $_POST['login'];
+				$_SESSION['passwd'] = hash("whirlpool", $_POST['passwd']);
+			}
 		}
 	}
 	else {
@@ -54,6 +57,17 @@ if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
 		$_SESSION['passwd'] = FALSE;
 	}
 }
+else if ($_POST['submit'] == 'signout') {
+	unset($_SESSION['login']);
+}
+else if ($_POST['submit'] == 'DelOrder') {
+	echo "DELETING ORDER\n";
+	orderDel();
+}
+else if ($_POST['submit'] == 'SubmitOrder') {
+	echo "ARCHIVING ORDER\n";
+	orderArchive();
+}
 
 
 
@@ -61,6 +75,7 @@ if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
 
 if (isset($_SESSION['login'])) {
 	echo "<div>WELCOME ", $_SESSION['login'], "</div>";
+	echo '<form action="index.php" name="signout.php" method="post"><input type="submit" name="submit" value="signout" /></form>';
 }
 else {
 	echo '<form action="signin.php" name="signin.php" method="post"><input type="submit" name="submit" value="signin" /></form>';
