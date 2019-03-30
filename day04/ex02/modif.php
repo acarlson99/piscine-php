@@ -12,6 +12,10 @@ function	auth($login, $passwd, $db) {
 	return (FALSE);
 }
 
+if (!($_POST['submit'] == "OK" && $_POST['login'] && $_POST['oldpw'] && $_POST['newpw'])) {
+	echo "ERROR\n";
+	return ;
+}
 if (file_exists("../private/passwd"))
 	$db = unserialize(file_get_contents("../private/passwd"));
 else
