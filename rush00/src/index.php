@@ -7,27 +7,65 @@ session_start();
 
 
 
-if ($_POST['submit'] == 'OK') {
+if ($_POST['submit'] == 'signin' || $_POST['submit'] == 'signup') {
+	if ($_POST['submit'] == 'signin') {
 
-	if ($_POST['login'] && $_POST['passwd']) {
-		$_SESSION['login'] = $_POST['login'];
-		$_SESSION['passwd'] = $_POST['passwd'];
+
+		if ($_POST['login'] && $_POST['passwd']) {
+			if (authUsr($_POST['login'], $_POST['passwd'])) {
+				$_SESSION['login'] = $_POST['login'];
+				$_SESSION['passwd'] = $_POST['passwd'];
+			}
+			else
+				echo "<div>LOGIN FAILED</div>\n";
+		}
+		else {
+			$_POST['login'] = FALSE;
+			$_POST['passwd'] = FALSE;
+			$_SESSION['login'] = FALSE;
+			$_SESSION['passwd'] = FALSE;
+		}
+
 	}
+	else if ($_POST['submit'] == 'signup') {
 
+		$db = getUsers();
+		if (array_key_exists($_POST['login'])) {
+			echo "OWO boy exists";
+			$_POST['login'] = FALSE;
+			$_POST['passwd'] = FALSE;
+			$_SESSION['login'] = FALSE;
+			$_SESSION['passwd'] = FALSE;
+		}
+		else {
+			if (addUsr($_POST['login'], $_POST['passwd'])) {
+				echo "LOGIN FAILED";
+				$_POST['login'] = FALSE;
+				$_POST['passwd'] = FALSE;
+				$_SESSION['login'] = FALSE;
+				$_SESSION['passwd'] = FALSE;
+			}
+		}
+	}
+	else {
+		$_POST['login'] = FALSE;
+		$_POST['passwd'] = FALSE;
+		$_SESSION['login'] = FALSE;
+		$_SESSION['passwd'] = FALSE;
+	}
 }
-if ($_SESSION['login'])
-	$login_value = $_SESSION['login'];
-if ($_SESSION['passwd'])
-	$passwd_value = $_SESSION['passwd'];
 
 
 
 
 
-if (isset($_SESSION['login']))
+if (isset($_SESSION['login'])) {
 	echo "<div>WELCOME ", $_SESSION['login'], "</div>";
-else
+}
+else {
 	echo '<form action="signin.php" name="signin.php" method="post"><input type="submit" name="submit" value="signin" /></form>';
+	echo '<form action="signup.php" name="signup.php" method="post"><input type="submit" name="submit" value="signup" /></form>';
+}
 
 $items = getItems();
 foreach ($items as $item) {

@@ -9,7 +9,8 @@ if ($_SESSION['evaluate']) {
 	$_SESSION['evaluate'] = 0;
 }
 echo "CART:<br />";
-foreach (getCart() as $item) {
+$cart = getCart();
+foreach ($cart as $item) {
 	echo $item['name'], ": $", $item['price'], "<img src='", $item['img'], "'width=25%><br />";
 }
 ?>

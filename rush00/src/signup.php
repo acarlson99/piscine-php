@@ -3,6 +3,6 @@
 Username: <input type="text" name="login" />
 <br />
 Password: <input type="password" name="passwd" />
-<input type="submit" name="submit" value="signin" />
+<input type="submit" name="submit" value="signup" />
 </form>
 </body></html>
