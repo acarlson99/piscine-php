@@ -71,3 +71,6 @@ __pycache__/
 # tags
 tags
 TAGS
+
+/private
+cook.txt
