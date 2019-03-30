@@ -5,11 +5,8 @@ session_start();
 
 print_r($_POST);
 echo "<br />";
-print_r(getItems()[$_POST['submit']]);
-if ($_SESSION['logged_on'])
-	addToCartUsr($_POST['submit'], $_SESSION['logged_on']);
-else
-	addToCartSesh($_POST['submit']);
-echo "<br />OUT FUNC CART<br />";
-print_r(getCart());
+addToCart($_POST['submit']);
+foreach (getCart() as $item) {
+	echo $item['name'], ": $", $item['price'], "<img src='", $item['img'], "'width=25%><br />";
+}
 ?>
