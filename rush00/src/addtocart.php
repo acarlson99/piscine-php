@@ -1,7 +1,8 @@
 <?php
 include 'getdata.php';
 
-session_start();
+if (!isset($_SESSION))
+	session_start();
 
 echo "<br />";
 if ($_SESSION['evaluate']) {
