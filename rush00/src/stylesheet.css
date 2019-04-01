@@ -3,6 +3,16 @@ body {
 	font-family: "avenir";
 }
 
+.test {
+	background-color: brown;
+	color: azure;
+}
+
+h1 {
+	background-color: aqua;
+	color: yellow;
+}
+
 .product {
 	font-weight: bold;
 	font-size: 300%;

@@ -37,15 +37,16 @@ function	addUsr($login, $passwd) {
 		mkdir("../private");
 	$data = getUsers(USRFILE);
 	if (!preg_match('/^\w{5,}$/', $login)) {
-		echo "BAD USERNAME";
+		echo "BAD USERNAME ";
 		return (1);
 	}
 	if (!preg_match('/^\w{5,}$/', $passwd)) {
 		echo "BAD PASSWD";
 		return (1);
 	}
-	if (key_exists($login, $data))
+	if (key_exists($login, $data)) {
 		return (1);
+	}
 	$data[$login]['login'] = $login;
 	$data[$login]['passwd'] = hash("whirlpool", $passwd);
 	file_put_contents(USRFILE, serialize_($data));
@@ -76,6 +77,7 @@ function	getCartFull() {
 	else
 		return (array());
 }
+
 
 function	getItems() {
 	if (file_exists(ITEMFILE))
@@ -141,31 +143,72 @@ function	orderDel() {
 	else
 		unset($_SESSION['session_cart']);
 }
-#need to edit list of user, if exist able to del
-function	adminDel() {
-	#to delete user if exists in file, read then unset if it is valid
-	if (isset($_SESSION['login'])) {
-		$user = getUsers();
-		echo "$user";
-		if ($_POST[$login] == $user)
-		{
-			unset($user[$_SESSION['login']]);
-			file_put_contents(USRFILE, serialize_($user));
-		}
-		#create button like login, to delete selected username printed from list
+
+function	delOrder() {
+	if (isset($_POST['login'])) {
+		$cart = getCart();
+		unset($cart[$_POST['login']]);
+		file_put_contents(BASKETFILE, serialize_($cart));
 	}
+	else
+		unset($_POST['cart']);
+
 }
-#admin function to manipulate archived orders, to look for all users, and to delete order
-function	adminArchive() {
-	if (isset($_SESSION['login'])) {
-		#get list of users
-		$user = getUsers();
-		echo "$user";
-		$arch = getArchive();
-		#open archive folder, with users who have an order open already
-/* 		if ($_POST[$login] == $arch) {
-		} */
+
+function	userDel() {
+		if (file_exists(USRFILE))
+			$user = unserialize_(file_get_contents(USRFILE));
+		foreach ($user as $key => $elem)
+		{
+			unset($user[$key]);
+			unset($user[$key]);
+		}
+		file_put_contents(USRFILE, serialize_($user));
+}
+
+function	itemDel() {
+	if (file_exists(ITEMFILE))
+		$item = unserialize_(file_get_contents(ITEMFILE));
+	foreach ($item as $key => $elem)
+	{
+		unset($item[$key]);
 	}
+	file_put_contents(ITEMFILE, serialize_($item));
+}
+
+function	addPeach() {
+	$item = unserialize_(file_get_contents(ITEMFILE));
+	$item['Peach'] = array('name' => 'Peach', 'price' => 4.20, 'tags' => array('red', 'orange', 'soft', 'juicy', 'year'), 'img' => 'https://images.ricardocuisine.com/services/recipes/1074x1074_494-background.jpg');
+	file_put_contents(ITEMFILE, serialize_($item));
+}
+
+function	delPeach() {
+	$item = unserialize_(file_get_contents(ITEMFILE));
+	$peach = 'Peach';
+	array_key_exists($peach, $item);
+	unset($item[$peach]);
+	file_put_contents(ITEMFILE, serialize_($item));
+}
+
+function adminAddUser($login, $passwd) {
+	if (!file_exists("../private"))
+		mkdir("../private");
+	$data = getUsers(USRFILE);
+	if (!preg_match('/^\w{5,}$/', $login)) {
+		echo "BAD USERNAME ";
+		return (1);
+	}
+	if (!preg_match('/^\w{5,}$/', $passwd)) {
+		echo "BAD PASSWD";
+		return (1);
+	}
+	if (key_exists($login, $data)) {
+		return (1);
+	}
+	$data[$login]['login'] = $login;
+	$data[$login]['passwd'] = hash("whirlpool", $passwd);
+	file_put_contents(USRFILE, serialize_($data));
+	return (0);
 }
 
 ?>
