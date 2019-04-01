@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" type="image/png" href="../favicon.ico">
 <?php
 include 'getdata.php';
 
@@ -5,10 +7,12 @@ if (!isset($_SESSION))
 	session_start();
 
 echo "<br />";
-if ($_SESSION['evaluate']) {
+if ($_SESSION['evaluate'] && $_POST['submit'] !== "view_cart") {
 	addToCart($_POST['submit']);
 	$_SESSION['evaluate'] = 0;
 }
+else
+	unset($_POST['view_cart']);
 echo "CART:<br />";
 $cart = getCart();
 $total = 0;
@@ -17,8 +21,6 @@ foreach ($cart as $item) {
 	$total += $item['price'];
 }
 echo '<br />$', $total;
-// NOTE: archive order
-// NOTE: modify basket
 ?>
 <form action="index.php" name="index.php" method="post">
 <input type="submit" name="submit" value="Back to shopping" />

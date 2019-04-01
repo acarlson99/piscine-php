@@ -1,0 +1,14 @@
+body {
+	background-color: rgb(244, 241, 225);
+	font-family: "avenir";
+}
+
+.product {
+	font-weight: bold;
+	font-size: 300%;
+	background-color: white;
+}
+
+hr {
+	border-color: transparent;
+}

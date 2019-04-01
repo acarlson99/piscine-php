@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" type="image/png" href="../favicon.ico">
 <html><body>
 <form action="index.php" name="index.php" method="post">
 Username: <input type="text" name="login" />

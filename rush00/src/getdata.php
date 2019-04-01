@@ -36,6 +36,14 @@ function	addUsr($login, $passwd) {
 	if (!file_exists("../private"))
 		mkdir("../private");
 	$data = getUsers(USRFILE);
+	if (!preg_match('/^\w{5,}$/', $login)) {
+		echo "BAD USERNAME";
+		return (1);
+	}
+	if (!preg_match('/^\w{5,}$/', $passwd)) {
+		echo "BAD PASSWD";
+		return (1);
+	}
 	if (key_exists($login, $data))
 		return (1);
 	$data[$login]['login'] = $login;
@@ -45,33 +53,54 @@ function	addUsr($login, $passwd) {
 }
 
 function	getUsers() {
-	return (unserialize_(file_get_contents(USRFILE)));
+	if (file_exists(USRFILE))
+		return (unserialize_(file_get_contents(USRFILE)));
+	else
+		return (array());
 }
 
 function	getCart() {
-	if (isset($_SESSION['login']))
-		return (unserialize_(file_get_contents(BASKETFILE))[$_SESSION['login']]);
+	if (isset($_SESSION['login'])) {
+		if (file_exists(BASKETFILE))
+			return (unserialize_(file_get_contents(BASKETFILE))[$_SESSION['login']]);
+		else
+			return (array());
+	}
 	else
 		return ($_SESSION['session_cart']);
 }
 
 function	getCartFull() {
-	return (unserialize_(file_get_contents(BASKETFILE)));
+	if (file_exists(BASKETFILE))
+		return (unserialize_(file_get_contents(BASKETFILE)));
+	else
+		return (array());
 }
 
 function	getItems() {
-	return (unserialize_(file_get_contents(ITEMFILE)));
+	if (file_exists(ITEMFILE))
+		return (unserialize_(file_get_contents(ITEMFILE)));
+	else {
+		echo "But what if you ran ./install.php, dickass<br />";
+		return (array());
+	}
 }
 
-function	addCartToDatabase($cart, $username) {
-	echo "TODO: implement\n";
-
+function	addCartToDatabase() {
+	if (isset($_SESSION['session_cart'])) {
+		foreach ($_SESSION['session_cart'] as $item) {
+			addToCart($item['name']);
+		}
+		unset($_SESSION['session_cart']);
+	}
 }
 
 function	addToCart($itemname) {
 	if (isset($_SESSION['login'])) {
 		$username = $_SESSION['login'];
 		$cart = getCartFull();
+		if (!isset($cart[$username]))
+			$cart[$username] = array();
 		$cart[$username][] = getItems()[$itemname];
 		file_put_contents(BASKETFILE, serialize_($cart));
 	}
@@ -83,7 +112,10 @@ function	addToCart($itemname) {
 }
 
 function	getArchive() {
-	return (unserialize_(file_get_contents(ARCHIVES)));
+	if (file_exists(ARCHIVES))
+		return (unserialize_(file_get_contents(ARCHIVES)));
+	else
+		return (array());
 }
 
 function	orderArchive() {
@@ -109,4 +141,31 @@ function	orderDel() {
 	else
 		unset($_SESSION['session_cart']);
 }
+#need to edit list of user, if exist able to del
+function	adminDel() {
+	#to delete user if exists in file, read then unset if it is valid
+	if (isset($_SESSION['login'])) {
+		$user = getUsers();
+		echo "$user";
+		if ($_POST[$login] == $user)
+		{
+			unset($user[$_SESSION['login']]);
+			file_put_contents(USRFILE, serialize_($user));
+		}
+		#create button like login, to delete selected username printed from list
+	}
+}
+#admin function to manipulate archived orders, to look for all users, and to delete order
+function	adminArchive() {
+	if (isset($_SESSION['login'])) {
+		#get list of users
+		$user = getUsers();
+		echo "$user";
+		$arch = getArchive();
+		#open archive folder, with users who have an order open already
+/* 		if ($_POST[$login] == $arch) {
+		} */
+	}
+}
+
 ?>
