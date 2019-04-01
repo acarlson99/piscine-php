@@ -1,3 +1,3 @@
 UPDATE ft_table
-SET birthday = birthday + INTERVAL 20 YEAR
+SET creation_date = creation_date + INTERVAL 20 YEAR
 WHERE id > 5;
