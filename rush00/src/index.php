@@ -120,7 +120,6 @@ if (isset($_SESSION['login'])) {
 
 if ($check == 1){
 	echo"Hello Workspace Admin :) </br>";
-	echo"List of active users in ";
 	$usr = getUsers();
  	echo '<form action="index.php" name="index.php" method="post"><input type="submit" name="submit" value="delete-users" /></form>';
 	echo '<form action="index.php" name="index.php" method="post"><input type="submit" name="submit" value="delete-orders" /></form>';
