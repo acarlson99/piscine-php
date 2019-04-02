@@ -10,7 +10,7 @@ class Vertex {
 	private $_y = 0;
 	private $_z = 0;
 	private $_w = 1.0;
-	private $_color = NULL;
+	private $_color;
 
 	static function	doc() {
 		return (file_get_contents("Vertex.doc.txt"));
@@ -21,12 +21,9 @@ class Vertex {
 			$this->_color = clone $kwargs['color'];
 		else
 			$this->_color = new Color(array('red' => 255, 'green' => 255, 'blue' => 255));
-		if (array_key_exists('x', $kwargs))
-			$this->_x = $kwargs['x'];
-		if (array_key_exists('y', $kwargs))
-			$this->_y = $kwargs['y'];
-		if (array_key_exists('z', $kwargs))
-			$this->_z = $kwargs['z'];
+		$this->_x = $kwargs['x'];
+		$this->_y = $kwargs['y'];
+		$this->_z = $kwargs['z'];
 		if (array_key_exists('w', $kwargs))
 			$this->_w = $kwargs['w'];
 		if (Vertex::$verbose)
