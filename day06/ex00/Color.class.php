@@ -1,6 +1,8 @@
 <?php
 
 class Color {
+	static $verbose = 0;
+
 	public $red = 0;
 	public $green = 0;
 	public $blue = 0;
@@ -29,13 +31,13 @@ class Color {
 	}
 
 	function	__toString() {
-		return ($this->red . " " . $this->green . " " . $this->blue);
+		return ("Color(".$this->red.",".$this->green.",".$this->blue.")");
 	}
 
 }
 
 $color = new Color(array('rgb' => "2147483645"));
 
-print("$color");
+print("$color\n");
 
 ?>
