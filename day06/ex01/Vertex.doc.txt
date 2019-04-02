@@ -7,7 +7,8 @@ and optional w and color values:
 new Vector(array('x' => 3.0, 'y' => 5.0, 'z' => 1.3, 'w' => 1.0,\
 'color' => $color));
 
-X, Y, Z and W are floating point numbers.  Color is something of type Color
+X, Y, Z and W are floating point numbers.  Color is something of type Color.
+If X, Y, or Z is not passed the behavior is undefined.
 By default Z is 1.0, Color is White.
 
 There exist getters for all variables.
