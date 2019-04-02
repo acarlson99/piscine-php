@@ -16,24 +16,12 @@ class Color {
 		else {
 			if (array_key_exists('red', $kwargs)) {
 				$this->red = intval($kwargs['red']);
-				if ($this->red > 255)
-					$this->red = 255;
-				else if ($this->red < 0)
-					$this->red = 0;
 			}
 			if (array_key_exists('green', $kwargs)) {
 				$this->green = intval($kwargs['green']);
-				if ($this->green > 255)
-					$this->green = 255;
-				else if ($this->green < 0)
-					$this->green = 0;
 			}
 			if (array_key_exists('blue', $kwargs)) {
 				$this->blue = intval($kwargs['blue']);
-				if ($this->blue > 255)
-					$this->blue = 255;
-				else if ($this->blue < 0)
-					$this->blue = 0;
 			}
 		}
 		if (COLOR::$verbose)
