@@ -10,7 +10,7 @@ class Vertex {
 	private $_y = 0;
 	private $_z = 0;
 	private $_w = 1.0;
-	private $_color; // = new Color(array('red' => 0, 'green' => 0, 'blue' => 0));
+	private $_color = NULL;
 
 	static function	doc() {
 		return (file_get_contents("Vertex.doc.txt"));
@@ -18,9 +18,9 @@ class Vertex {
 
 	function	__construct(array $kwargs) {
 		if (array_key_exists('color', $kwargs))
-			$this->color = clone $kwargs['color'];
+			$this->_color = clone $kwargs['color'];
 		else
-			$this->_color = NULL; // new Color(array('red' => 255, 'green' => 255, 'blue' => 255));
+			$this->_color = new Color(array('red' => 255, 'green' => 255, 'blue' => 255));
 		if (array_key_exists('x', $kwargs))
 			$this->_x = $kwargs['x'];
 		if (array_key_exists('y', $kwargs))
@@ -31,7 +31,6 @@ class Vertex {
 			$this->_w = $kwargs['w'];
 		if (Vertex::$verbose)
 			echo "$this constructed\n";
-		echo $this->_color . "\n";
 	}
 
 	function	__destruct() {
@@ -40,8 +39,10 @@ class Vertex {
 	}
 
 	function	__toString() {
-		// return ("Vertex( $this->_x, $this->_y, $this->_z, $this->_w, $this->_color)");
-		return ("Vertex( " . number_format($this->_x, 2) . ", " . number_format($this->_y, 2) . ", " . number_format($this->_z, 2) . ", " . number_format($this->_w, 2) . ", " . $this->_color . " )");
+		if (Vertex::$verbose)
+			return ("Vertex( x: " . number_format($this->_x, 2) . ", y: " . number_format($this->_y, 2) . ", z:" . number_format($this->_z, 2) . ", w:" . number_format($this->_w, 2) . ", " . $this->_color . " )");
+		else
+			return ("Vertex( x: " . number_format($this->_x, 2) . ", y: " . number_format($this->_y, 2) . ", z:" . number_format($this->_z, 2) . ", w:" . number_format($this->_w, 2) . " )");
 	}
 
 	function	getX() {
