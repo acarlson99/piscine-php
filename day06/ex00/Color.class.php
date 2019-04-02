@@ -24,19 +24,22 @@ class Color {
 				$this->blue = intval($kwargs['blue']);
 			}
 		}
+		if (COLOR::$verbose)
+			print("$this constructed.\n");
 	}
 
 	function	__destruct() {
-
+		if (COLOR::$verbose)
+			print("$this constructed.\n");
 	}
 
 	function	__toString() {
-		return ("Color(".$this->red.",".$this->green.",".$this->blue.")");
+		return ("Color( red: ".str_pad($this->red, 3, " ", STR_PAD_LEFT).", green: ".str_pad($this->green,3, " ", STR_PAD_LEFT).", blue: ".str_pad($this->blue, 3, " ", STR_PAD_LEFT).")");
 	}
 
 }
 
-$color = new Color(array('rgb' => "2147483645"));
+$color = new Color(array('rgb' => "0000483645"));
 
 print("$color\n");
 
