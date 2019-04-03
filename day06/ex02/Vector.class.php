@@ -33,4 +33,46 @@ class	Vector {
 		return ("Vector( x: " . number_format($this->_x, 2) . ", y: " . number_format($this->_y, 2) . ", z:" . number_format($this->_z, 2) . ", w:" . number_format($this->_w, 2) . " )");
 	}
 
+	function	magnitude() {
+
+	}
+
+	function	normalize() {
+
+	}
+
+	function	add(Vector $rhs) {
+
+	}
+
+	function	sub(Vector $rhs) {
+
+	}
+
+	function	opposite() {
+
+	}
+
+	function	scalarProduct($k) {
+
+	}
+
+	function	dotProduct(Vector $rhs) {
+
+	}
+
+	function	cos(Vector $rhs) {
+
+	}
+
+	function	crossProduct(Vector $rhs) {
+
+	}
+
+	/*
+
+	  MAGNITUDE:
+	  |a| = sqrt(a1^2 + a2^2 + a3^2);
+
+	*/
 }
