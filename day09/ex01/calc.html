@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>calc</title>
+		<style type="text/css">
+		 
+		</style>
+	</head>
+	<body>
+		<select id="operation">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<input type="text" id="lhs" name="lhs">
+		<input type="text" id="rhs" name="rhs">
+		<button type="button" onclick="calc()" name="submit" value="Try me!">Try me!</button>
+
+		<script>
+		 function	calc() {
+			 var lhs = parseInt(document.getElementById("lhs").value);
+			 var rhs = parseInt(document.getElementById("rhs").value);
+			 if (lhs < 0 || rhs < 0) {
+				 alert("Error :(");
+				 return ;
+			 }
+			 var m = "";
+			 switch (document.getElementById("operation").value) {
+				 case "+":
+					 m = lhs + rhs;
+					 break;
+				 case "-":
+					 m = lhs - rhs;
+					 break;
+				 case "*":
+					 m = lhs * rhs;
+					 break;
+				 case "/":
+					 if (rhs == 0)
+						 m = "It's over 9000";
+					 else
+						 m = lhs / rhs;
+					 break;
+				 case "%":
+					 if (rhs == 0)
+						 m = "It's over 9000";
+					 else
+						 m = lhs % rhs;
+					 break;
+			 }
+			 alert(m);
+		 }
+		 setInterval(function(){alert("Please, daddy, use me...");}, 30000);
+		</script>
+	</body>
+</html>
