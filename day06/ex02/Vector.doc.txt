@@ -2,6 +2,33 @@
 <- Vector ----------------------------------------------------------------------
 The Vector class handles vectors.
 
-TODO: implement
+An instance can be created with a Vertex destination and an optional origin:
+new Vector(array('dest' => myVertex, 'orig' => otherVertex));
+
+The class provides the following methods:
+
+float	magnitude();
+Calculates magnitude of vector.
+
+Vector	normalize();
+Returns normalized vector.
+
+Vector	sub(Vector $rhs);
+Subtracts two vectors.
+
+Vector	opposite();
+Returns opposite of vector.  Equivalent to v = -v.
+
+Vector	scalarProduct($k);
+Scalar product of vector.  Multiplies every point of vector by k.
+
+float	dotProduct(Vector $rhs);
+Dot product of vectors.
+
+float	cos(Vector $rhs);
+Vector cosin.
+
+Vector	crossProduct(Vector $rhs);
+Vector cross product.
 
 ---------------------------------------------------------------------- Vector ->

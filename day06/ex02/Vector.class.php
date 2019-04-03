@@ -38,7 +38,6 @@ class	Vector {
 
 	function	__toString() {
 		return (sprintf("Vector( x:%.2f, y:%.2f, z:%.2f, w:%.2f )", $this->_x, $this->_y, $this->_z, $this->_w));
-		// return ("Vector( x:" . number_format($this->_x, 2) . ", y:" . number_format($this->_y, 2) . ", z:" . number_format($this->_z, 2) . ", w:" . number_format($this->_w, 2) . " )");
 	}
 
 	function	magnitude() {
@@ -93,11 +92,4 @@ class	Vector {
 	function	getW() {
 		return ($this->_w);
 	}
-
-	/*
-
-	  MAGNITUDE:
-	  |a| = sqrt(a1^2 + a2^2 + a3^2);
-
-	*/
 }
