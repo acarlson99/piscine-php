@@ -1,6 +1,6 @@
 
 <- Vertex ----------------------------------------------------------------------
-The Vertex class handles vectors.
+The Vertex class handles vertices.
 
 An instance can be constructed from an x,y,z triple
 and optional w and color values:
