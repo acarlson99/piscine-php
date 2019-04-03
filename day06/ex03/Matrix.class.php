@@ -27,4 +27,8 @@ class	Matrix {
 	function	__toString() {
 		return (sprintf("  vtcX vtcY vtcZ vtxO\nx %-.1f %-.1f %-.1f %-1.f\ny %-.1f %-.1f %-.1f %-1.f\nz %-.1f %-.1f %-.1f %-1.f\nw %-.1f %-.1f %-.1f %-1.f\n", $this->_vects[0]->getX(), $this->_vects[1]->getX(), $this->_vects[2]->getX(), $this->_vects[3]->getX(), $this->_vects[0]->getY(), $this->_vects[1]->getY(), $this->_vects[2]->getY(), $this->_vects[3]->getY(), $this->_vects[0]->getZ(), $this->_vects[1]->getZ(), $this->_vects[2]->getZ(), $this->_vects[3]->getZ(), $this->_vects[0]->getW(), $this->_vects[1]->getW(), $this->_vects[2]->getW(), $this->_vects[3]->getW()));
 	}
+
+	function	doc() {
+		return (file_get_contents("Matrix.doc.txt"));
+	}
 }
