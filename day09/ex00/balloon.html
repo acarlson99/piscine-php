@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+	<head>
+		<title>Balloon</title>
+		<style type="text/css">
+		 #balloon {
+			 background-color: red;
+			 width: 200px;
+			 height: 200px;
+			 border-radius: 100%;
+			 margin: auto;
+		 }
+		</style>
+	</head>
+	<body>
+		<div id="balloon"></div>
+		<script>
+		 var initwh = 200;
+		 var mod = 0;
+		 var colors = new Array('red', 'green', 'blue');
+		 var coloridx = 0;
 
-</body>
+		 function	balloonUpdate() {
+			 coloridx = coloridx % 3;
+			 if (mod + initwh > 420)
+				 mod = 0;
+			 else if (mod < 0)
+				 mod = 0;
+			 var bdiv = document.getElementById("balloon");
+			 bdiv.style.width = initwh + mod + "px";
+			 bdiv.style.height = initwh + mod + "px";
+			 bdiv.style.backgroundColor = colors[coloridx];
+		 }
+
+		 document.getElementById("balloon").onclick = function() {
+			 mod += 10;
+			 ++coloridx;
+			 balloonUpdate();
+		 }
+
+		 document.getElementById("balloon").onmouseout = function() {
+			 mod -= 5;
+			 if (coloridx == 0)
+				 coloridx = 2;
+			 else
+				 --coloridx;
+			 balloonUpdate();
+		 }
+		</script>
+	</body>
 </html>
