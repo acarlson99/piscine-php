@@ -45,7 +45,7 @@
 		 function	getElement() {
 			 var div = document.getElementById("ft_list");
 			 var element = prompt("What do you want to add?");
-			 if (element !== "") {
+			 if (element !== null && element !== "") {
 				 div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
 				 thing.unshift(element);
 			 }
