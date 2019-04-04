@@ -7,11 +7,11 @@
 		<div id="ft_list" >
 		</div>
 
-		<button type="button" onclick="getElement()" name="submit" value="Try me!">Try me!</button>
+		<button type="button" onclick="getElement()" name="new" value="Try me!">Try me!</button>
 		<script>
 		 var thing = new Array();
 		 if (document.cookie) {
-			 thing = array(document.cookie);
+			 thing = document.cookie.split(',');
 			 ohgodthisisgrossupdateeverythingwhyohgodwhy();
 		 }
 		 else {
@@ -22,15 +22,16 @@
 		 var thirdbit = "</div>";
 
 		 function	removeElement(b) {
-			 console.log(b);
-			 console.log(thing);
-			 console.log(thing.length - b - 1);
-			 thing.splice(thing.length - b - 1, 1);
-			 ohgodthisisgrossupdateeverythingwhyohgodwhy();
-			 console.log(thing);
+			 if (confirm("Remove element '" + thing[thing.length - b - 1] + "' from list?")) {
+				 thing.splice(thing.length - b - 1, 1);
+				 ohgodthisisgrossupdateeverythingwhyohgodwhy();
+			 }
 		 }
 
 		 function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
+			 var firstbit = "<div onclick=\"removeElement("
+			 var secondbit = ")\">";
+			 var thirdbit = "</div>";
 			 var div = document.getElementById("ft_list");
 			 var i = 0;
 			 div.innerHTML = '';
