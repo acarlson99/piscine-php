@@ -1,1 +1,54 @@
-<script src="jquery-3.3.1.min.js"></script>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Balloon</title>
+		<style type="text/css">
+		 #balloon {
+			 background-color: red;
+			 width: 200px;
+			 height: 200px;
+			 border-radius: 100%;
+			 margin: auto;
+		 }
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="balloon"></div>
+		<script>
+		 $(document).ready(function() {
+			 var initwh = 200;
+			 var mod = 0;
+			 var colors = new Array('red', 'green', 'blue');
+			 var coloridx = 0;
+
+			 function	balloonUpdate() {
+				 coloridx = coloridx % 3;
+				 if (mod + initwh > 420)
+					 mod = 0;
+				 else if (mod < 0)
+					 mod = 0;
+				 var bdiv = document.getElementById("balloon");
+				 bdiv.style.width = initwh + mod + "px";
+				 bdiv.style.height = initwh + mod + "px";
+				 bdiv.style.backgroundColor = colors[coloridx];
+			 }
+
+			 $('#balloon').click(function() {
+				 mod += 10;
+			++coloridx;
+				 balloonUpdate();
+			 });
+
+			 $('#balloon').mouseleave(function() {
+				 mod -= 5;
+				 if (coloridx == 0)
+					 coloridx = 2;
+				 else
+					 --coloridx;
+				 balloonUpdate();
+			 });
+		 });
+		</script>
+	</body>
+</html>
