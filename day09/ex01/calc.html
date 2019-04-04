@@ -26,6 +26,8 @@
 				 alert("Error :(");
 				 return ;
 			 }
+			 lhs = parseInt(lhs);
+			 rhs = parseInt(rhs);
 			 var m = "";
 			 switch (document.getElementById("operation").value) {
 				 case "+":
@@ -39,13 +41,13 @@
 					 break;
 				 case "/":
 					 if (rhs == 0)
-						 m = "It's over 9000";
+						 m = "It's over 9000!";
 					 else
 						 m = lhs / rhs;
 					 break;
 				 case "%":
 					 if (rhs == 0)
-						 m = "It's over 9000";
+						 m = "It's over 9000!";
 					 else
 						 m = lhs % rhs;
 					 break;
