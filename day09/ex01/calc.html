@@ -20,9 +20,9 @@
 
 		<script>
 		 function	calc() {
-			 var lhs = parseInt(document.getElementById("lhs").value);
-			 var rhs = parseInt(document.getElementById("rhs").value);
-			 if (lhs < 0 || rhs < 0) {
+			 var lhs = document.getElementById("lhs").value;
+			 var rhs = document.getElementById("rhs").value;
+			 if (lhs < 0 || rhs < 0 || isNaN(lhs) || isNaN(rhs)) {
 				 alert("Error :(");
 				 return ;
 			 }
