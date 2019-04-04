@@ -10,6 +10,13 @@
 		<button type="button" onclick="getElement()" name="submit" value="Try me!">Try me!</button>
 		<script>
 		 var thing = new Array();
+		 if (document.cookie) {
+			 thing = array(document.cookie);
+			 ohgodthisisgrossupdateeverythingwhyohgodwhy();
+		 }
+		 else {
+			 document.cookie = thing;
+		 }
 		 var firstbit = "<div onclick=\"removeElement("
 		 var secondbit = ")\">";
 		 var thirdbit = "</div>";
@@ -31,6 +38,7 @@
 				 div.innerHTML = firstbit + i + secondbit + thing[thing.length - n - 1] + thirdbit + div.innerHTML;
 				 ++i;
 			 }
+			 document.cookie = thing;
 		 }
 
 		 function	getElement() {
@@ -40,6 +48,7 @@
 				 div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
 				 thing.unshift(element);
 			 }
+			 document.cookie = thing;
 		 }
 		</script>
 	</body>
