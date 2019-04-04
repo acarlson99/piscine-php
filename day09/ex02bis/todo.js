@@ -1,11 +1,31 @@
 $('document').ready(function() {
+	var thing = $.makeArray();
+
 	$('button').click(function() {
-		var div = document.getElementById("ft_list");
 		var element = prompt("What do you want to add?");
 		if (element !== null && element !== "") {
-			div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
+			$("#ft_list").prepend("<div class=\"list_elem\">" + element + "</div>");
 			thing.unshift(element);
 		}
 		document.cookie = thing;
 	})
+
+	$('.list_elem').click(function(e) {
+		console.log("Killing thing");	// TODO: what why does this not work who designed this software anyway
+		$(e.target).remove();
+	});
+
+	function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
+		var firstbit = "<div onclick=\"removeElement("
+		var secondbit = ")\">";
+		var thirdbit = "</div>";
+		var div = document.getElementById("ft_list");
+		var i = 0;
+		div.innerHTML = '';
+		for (n in thing) {
+			div.innerHTML = firstbit + i + secondbit + thing[thing.length - n - 1] + thirdbit + div.innerHTML;
+			++i;
+		}
+		document.cookie = thing;
+	}
 });
