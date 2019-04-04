@@ -4,10 +4,43 @@
 		<title>toodlist</title>
 	</head>
 	<body>
-		<script src="todo.js"></script>
 		<div id="ft_list" >
-			this is hell
 		</div>
 
+		<button type="button" onclick="getElement()" name="submit" value="Try me!">Try me!</button>
+		<script>
+		 var thing = new Array();
+		 var firstbit = "<div onclick=\"removeElement("
+		 var secondbit = ")\">";
+		 var thirdbit = "</div>";
+
+		 function	removeElement(b) {
+			 console.log(b);
+			 console.log(thing);
+			 console.log(thing.length - b - 1);
+			 thing.splice(thing.length - b - 1, 1);
+			 ohgodthisisgrossupdateeverythingwhyohgodwhy();
+			 console.log(thing);
+		 }
+
+		 function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
+			 var div = document.getElementById("ft_list");
+			 var i = 0;
+			 div.innerHTML = '';
+			 for (n in thing) {
+				 div.innerHTML = firstbit + i + secondbit + thing[thing.length - n - 1] + thirdbit + div.innerHTML;
+				 ++i;
+			 }
+		 }
+
+		 function	getElement() {
+			 var div = document.getElementById("ft_list");
+			 var element = prompt("What do you want to add?");
+			 if (element !== "") {
+				 div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
+				 thing.unshift(element);
+			 }
+		 }
+		</script>
 	</body>
 </html>
