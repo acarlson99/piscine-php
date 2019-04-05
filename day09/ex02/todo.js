@@ -1,40 +1,36 @@
-function	thing() {
+function	boyilovejs() {
 	console.log("wow boy howdy js is amazing huh gee wiz what a doggone treat this is huh fellas im really enjoying myself doing what here im doing this java scipt stuff huh golly gee this is some neato stuff eh lads");
 }
 
 var thing = new Array();
 if (document.cookie) {
-	thing = getCookie();
-	console.log(thing);
+	thing = getCookie("sampletext=");
 	ohgodthisisgrossupdateeverythingwhyohgodwhy();
 }
 else {
-	setCookie();
+	setCookie(thing);
 }
 var firstbit = "<div onclick=\"removeElement("
 var secondbit = ")\">";
 var thirdbit = "</div>";
 
-function	getCookie() {
-	// var b = document.cookie.split(',');
-	// console.log(b);
-	// // b.map(x => atob(x));
-	// for (n in b) {
-	// 	console.log("atob on", b[n]);
-	// 	b[n] = atob(b[n]);
-	// }
-	// return (b);
-	return (document.cookie.split(','));
+function	getCookie(name) {
+	var b = decodeURIComponent(document.cookie);
+	var ca = b.split(';');
+	for (i in ca) {
+		var c = ca[i];
+		if (c.indexOf(name) == 0)
+			return (c.substring(name.length, c.length).split(',').map(x => atob(x)));
+	}
+	return (new Array());
 }
 
-function	setCookie() {
-	// var b = thing.map(x => btoa(x));
-	// console.log(b);
-	// document.cookie = b;
-	// console.log("Cookie is", document.cookie);
-	// console.log("Would return", getCookie());
-	// return ;
-	document.cookie = thing;
+function	setCookie(cookme) {
+	var b = cookme.map(x => btoa(x));
+	b = "sampletext=" + b + ";";
+	document.cookie = b;
+	return ;
+	document.cookie = cookme;
 }
 
 function	removeElement(b) {
@@ -55,7 +51,7 @@ function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
 		div.innerHTML = firstbit + i + secondbit + thing[thing.length - n - 1] + thirdbit + div.innerHTML;
 		++i;
 	}
-	setCookie();
+	setCookie(thing);
 }
 
 function	getElement() {
@@ -65,5 +61,5 @@ function	getElement() {
 		div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
 		thing.unshift(element);
 	}
-	setCookie();
+	setCookie(thing);
 }
