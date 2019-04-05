@@ -29,8 +29,6 @@ function	setCookie(cookme) {
 	var b = cookme.map(x => btoa(x));
 	b = "sampletext=" + b + ";";
 	document.cookie = b;
-	return ;
-	document.cookie = cookme;
 }
 
 function	removeElement(b) {

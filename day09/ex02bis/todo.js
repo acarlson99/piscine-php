@@ -1,4 +1,21 @@
 $('document').ready(function() {
+	function	getCookie(name) {
+		var b = decodeURIComponent(document.cookie);
+		var ca = b.split(';');
+		for (i in ca) {
+			var c = ca[i];
+			if (c.indexOf(name) == 0)
+				return (c.substring(name.length, c.length).split(',').map(x => atob(x)));
+		}
+		return (new Array());
+	}
+
+	function	setCookie(cookme) {
+		var b = cookme.map(x => btoa(x));
+		b = "sampletext=" + b + ";";
+		document.cookie = b;
+	}
+
 	var thing = $.makeArray();
 
 	$('button').click(function() {
@@ -7,7 +24,8 @@ $('document').ready(function() {
 			$("#ft_list").prepend("<div class=\"list_elem\">" + element + "</div>");
 			thing.unshift(element);
 		}
-		document.cookie = thing;
+		setCookie(thing);
+		console.log(getCookie("sampletext="));
 	})
 
 	$('div').click(function(e) {
