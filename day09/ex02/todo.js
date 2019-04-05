@@ -4,15 +4,38 @@ function	thing() {
 
 var thing = new Array();
 if (document.cookie) {
-	thing = document.cookie.split(',');
+	thing = getCookie();
+	console.log(thing);
 	ohgodthisisgrossupdateeverythingwhyohgodwhy();
 }
 else {
-	document.cookie = thing;
+	setCookie();
 }
 var firstbit = "<div onclick=\"removeElement("
 var secondbit = ")\">";
 var thirdbit = "</div>";
+
+function	getCookie() {
+	// var b = document.cookie.split(',');
+	// console.log(b);
+	// // b.map(x => atob(x));
+	// for (n in b) {
+	// 	console.log("atob on", b[n]);
+	// 	b[n] = atob(b[n]);
+	// }
+	// return (b);
+	return (document.cookie.split(','));
+}
+
+function	setCookie() {
+	// var b = thing.map(x => btoa(x));
+	// console.log(b);
+	// document.cookie = b;
+	// console.log("Cookie is", document.cookie);
+	// console.log("Would return", getCookie());
+	// return ;
+	document.cookie = thing;
+}
 
 function	removeElement(b) {
 	if (confirm("Remove element '" + thing[thing.length - b - 1] + "' from list?")) {
@@ -32,7 +55,7 @@ function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
 		div.innerHTML = firstbit + i + secondbit + thing[thing.length - n - 1] + thirdbit + div.innerHTML;
 		++i;
 	}
-	document.cookie = thing;
+	setCookie();
 }
 
 function	getElement() {
@@ -42,5 +65,5 @@ function	getElement() {
 		div.innerHTML = firstbit + thing.length + secondbit + element + thirdbit + div.innerHTML;
 		thing.unshift(element);
 	}
-	document.cookie = thing;
+	setCookie();
 }
