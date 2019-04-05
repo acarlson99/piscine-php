@@ -10,9 +10,11 @@ $('document').ready(function() {
 		document.cookie = thing;
 	})
 
-	$('.list_elem').click(function(e) {
+	$('div').click(function(e) {
+		if ($(e.target).hasClass('list_elem')) {
 		console.log("Killing thing");	// TODO: what why does this not work who designed this software anyway
 		$(e.target).remove();
+		}
 	});
 
 	function	ohgodthisisgrossupdateeverythingwhyohgodwhy() {
